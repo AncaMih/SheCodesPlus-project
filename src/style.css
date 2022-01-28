@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&display=swap");
+
+/* note  */
+
+body {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.bg-image {
+  background-size: 100%;
+  height: 100vh;
+}
+
+.container {
+  width: 50%;
+  margin: 0 auto;
+  padding: 0;
+  padding-top: 70px;
+}
+
+.title {
+  color: #393f4c;
+  font-size: 40px;
+  font-weight: 900;
+  position: relative;
+  left: 320px;
+  top: 50px;
+}
+
+.top-body {
+  padding-left: 50px;
+  padding-top: 30px;
+}
+
+.top-body-city {
+  color: #5a6275;
+  font-size: 35px;
+}
+
+.today-date {
+  color: #5a6275;
+  font-size: 20px;
+  border: 10px;
+}
+
+.today-time {
+  color: #5a6275;
+  font-size: 20px;
+}
+
+/* from the top body */
+
+.today-temp {
+  position: relative;
+  right: 30px;
+  bottom: 5px;
+  color: #151f21;
+  font-weight: bold;
+}
+.temp-units {
+  position: relative;
+  bottom: 9px;
+  font-size: 15px;
+  outline: none;
+  text-decoration: none;
+  color: #151f21;
+}
+.conditions {
+  color: #5a6275;
+  position: relative;
+  left: 40px;
+  top: 30px;
+}
+
+.five-days-forecast {
+  position: relative;
+  left: 50px;
+}
+.icons {
+  position: relative;
+  left: 16px;
+}
+.weekdays {
+  font-size: 12px;
+}
