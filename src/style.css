@@ -83,3 +83,9 @@ body {
 .weekdays {
   font-size: 12px;
 }
+
+footer {
+  text-align: center;
+  position: relative;
+  left: 70px;
+}
