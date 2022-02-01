@@ -87,5 +87,6 @@ body {
 footer {
   text-align: center;
   position: relative;
-  left: 70px;
+  right: 40px;
+  font-size: 15px;
 }
