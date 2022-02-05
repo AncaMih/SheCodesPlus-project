@@ -6,6 +6,12 @@ body {
   font-family: "Ubuntu", sans-serif;
 }
 
+footer {
+  text-align: center;
+  position: relative;
+  right: 40px;
+  font-size: 15px;
+}
 .bg-image {
   background-size: 100%;
   height: 100vh;
@@ -37,18 +43,15 @@ body {
   font-size: 35px;
 }
 
-.today-date {
-  color: #5a6275;
-  font-size: 20px;
-  border: 10px;
-}
-
 .today-time {
   color: #5a6275;
-  font-size: 20px;
+  font-size: 18px;
+  line-height: 30px;
 }
 
-/* from the top body */
+.london-pic {
+  border-radius: 20px;
+}
 
 .today-temp {
   position: relative;
@@ -56,6 +59,7 @@ body {
   bottom: 5px;
   color: #151f21;
   font-weight: bold;
+  padding: 10px;
 }
 .temp-units {
   position: relative;
@@ -84,9 +88,12 @@ body {
   font-size: 12px;
 }
 
-footer {
-  text-align: center;
-  position: relative;
-  right: 40px;
-  font-size: 15px;
+.today-temp .active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+
+.today-temp .active:hover {
+  text-decoration: none;
 }
