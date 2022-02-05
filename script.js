@@ -47,7 +47,6 @@ function formatDate(timezone) {
 }
 
 function displayTemperature(response) {
-  celsiusTemperature = response.data.main.temp;
   document.querySelector(".top-body-city").innerHTML = response.data.name;
   document.querySelector(".temp-figure").innerHTML = Math.round(
     response.data.main.temp
@@ -101,33 +100,13 @@ function searchLocation(position) {
 }
 search("London");
 
-function convertFahrenheitTemp(event) {
+function getCurrentCity(event) {
   event.preventDefault();
-  let fahrenheitFormula = (celsiusTemperature * 9) / 5 + 32;
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let temperatureElement = document.querySelector(".temp-figure");
-  temperatureElement.innerHTML = Math.round(fahrenheitFormula);
+  navigator.geolocation.getCurrentPosition(searchLocation);
 }
-
-function convertCelsiusTemp(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector(".temp-figure");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
-let celsiusTemperature = null;
 
 let searchForm = document.querySelector(".search-location");
 searchForm.addEventListener("submit", handleSearch);
 
 let currentLocationButton = document.querySelector(".current-location");
 currentLocationButton.addEventListener("click", getCurrentCity);
-
-let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", convertFahrenheitTemp);
-
-let celsiusLink = document.querySelector("#celsius");
-celsiusLink.addEventListener("click", convertCelsiusTemp);
