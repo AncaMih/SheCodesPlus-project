@@ -47,6 +47,7 @@ function formatDate(timezone) {
 }
 
 function displayTemperature(response) {
+  console.log(response.data);
   document.querySelector(".top-body-city").innerHTML = response.data.name;
   document.querySelector(".temp-figure").innerHTML = Math.round(
     response.data.main.temp
@@ -65,7 +66,7 @@ function displayTemperature(response) {
     response.data.main.temp_min
   );
   document.querySelector(".temp-description").innerHTML =
-    response.data.weather[0].main;
+    response.data.weather[0].description;
   document.querySelector(".today-time").innerHTML = formatDate(
     response.data.timezone
   );

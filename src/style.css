@@ -61,6 +61,10 @@ footer {
   font-weight: bold;
   padding: 10px;
 }
+
+.temp-description:first-letter {
+  text-transform: capitalize;
+}
 .temp-units {
   position: relative;
   bottom: 9px;
