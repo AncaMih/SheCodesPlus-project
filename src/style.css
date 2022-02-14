@@ -90,6 +90,8 @@ footer {
 }
 .weekdays {
   font-size: 12px;
+  position: relative;
+  right: 45px;
 }
 
 .today-temp .active {

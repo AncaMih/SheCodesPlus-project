@@ -46,32 +46,51 @@ function formatDate(timezone) {
   ${day}, ${date} ${month} ${year} `;
 }
 
-function displayNextDays() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function displayNextDays(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector(".five-days-forecast");
 
   let forecastHTML = `<div class = "row">`;
 
-  let days = ["Tue", "Thu", "Fri", "Sat", "Sun"];
-
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
+  forecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 7) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
         <div class="card rounded-pill p-1 border-3 text-center shadow-sm p-10bg weekdays" 
           style="width: 80px; height: 110px; background-color: white">
        <img class= icons 
-                 src="images/rainy.webp" 
-                 alt="rainy" 
-                 width="30px">
-            <div>Light rain</div>
-            <div> 16°</div>
-            <div>${day}</div>
-            </div>
-          </div>
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt="rainy" 
+          width="30px">
+        <div>Light rain</div>
+        <div> ${Math.round(forecastDay.temp.max)}°</div>
+        <div>${formatDay(forecastDay.dt)}</div>
+        </div>
+      </div>
         `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "f218767f4aa280864e9166be6bb4bf21";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayNextDays);
 }
 
 function displayTemperature(response) {
@@ -107,6 +126,8 @@ function displayTemperature(response) {
   document
     .querySelector("#icon")
     .setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -128,7 +149,6 @@ function searchLocation(position) {
   axios.get(apiUrl).then(displayTemperature);
 }
 search("London");
-displayNextDays();
 
 function getCurrentCity(event) {
   event.preventDefault();
