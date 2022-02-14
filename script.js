@@ -46,6 +46,34 @@ function formatDate(timezone) {
   ${day}, ${date} ${month} ${year} `;
 }
 
+function displayNextDays() {
+  let forecastElement = document.querySelector(".five-days-forecast");
+
+  let forecastHTML = `<div class = "row">`;
+
+  let days = ["Tue", "Thu", "Fri", "Sat", "Sun"];
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+        <div class="card rounded-pill p-1 border-3 text-center shadow-sm p-10bg weekdays" 
+          style="width: 80px; height: 110px; background-color: white">
+       <img class= icons 
+                 src="images/rainy.webp" 
+                 alt="rainy" 
+                 width="30px">
+            <div>Light rain</div>
+            <div> 16°</div>
+            <div>${day}</div>
+            </div>
+          </div>
+        `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemperature(response) {
   console.log(response.data);
   document.querySelector(".top-body-city").innerHTML = response.data.name;
@@ -100,6 +128,7 @@ function searchLocation(position) {
   axios.get(apiUrl).then(displayTemperature);
 }
 search("London");
+displayNextDays();
 
 function getCurrentCity(event) {
   event.preventDefault();
